@@ -14,7 +14,7 @@ def time_handle(intervel):
 
 def jukuan_login():
     auth('18925229395', 'daminghu1981')
-    
+    print ('可查询次数：',get_query_count()['spare'])
     
 def get_today():
     return (datetime.datetime.now()).strftime('%Y-%m-%d')
