@@ -24,9 +24,9 @@ def dfdate_xueqiu(code,day_number):
     return finance.run_query(query(finance.STK_XUEQIU_PUBLIC).filter(finance.STK_XUEQIU_PUBLIC.code==code).order_by(finance.STK_XUEQIU_PUBLIC.day.desc()).limit(day_number))
 
 
-def dfdate_price(code,start_date,end_date):
+def dfdate_price(code,count_number,c_date):
      
-    return get_price(code,start_date,end_date,frequency='daily',fields=['open','close']).sort_index(axis = 0,ascending = False)
+    return get_price(code, count=count_number, end_date=c_date, frequency='daily', fields=['open', 'close']).sort_index(axis = 0,ascending = False)
 
 def code_transfer(code):
     

@@ -11,17 +11,16 @@ jukuan_login()
 ################################################################################## 
 code='600175.XSHG'
 day_number=50
-c_date=get_today()
-s_date=time_handle(day_number)
-print(c_date)
-print(s_date)
+date_today=get_today()
+#s_date=time_handle(day_number)
+#print(date_today)
 ##################################################################################
 # df=finance.run_query(query(finance.STK_XUEQIU_PUBLIC).filter(finance.STK_XUEQIU_PUBLIC.day==c_date).order_by(finance.STK_XUEQIU_PUBLIC.new_follower.desc()).limit(10))
 df_xueqiu=dfdate_xueqiu(code,day_number)
  
 df_xueqiu.to_csv('xueqiu.csv',index=True)
 
-df_hangqing= dfdate_price(code,s_date,c_date)
+df_hangqing= dfdate_price(code,day_number,date_today)
 
 df_hangqing.to_csv('hangqing.csv',index=True)
 
@@ -37,13 +36,16 @@ df_xueqiu.insert(column_id.index('new_trade')+2,'close',date_close)
 code_name=code_transfer(code)+'.csv'
 df_xueqiu.to_csv(code_name,index=False)
 
-# x = df_xueqiu.index('day') 
-# y = df_xueqiu.index('close') 
-# print(x)
-# # plt.title("Matplotlib demo") 
-# # plt.xlabel("x axis caption") 
-# # plt.ylabel("y axis caption") 
-# plt.plot(x,y) 
-# plt.show()
+print('ok')
+
+from matplotlib import pyplot as plt 
+  
+
+# plt.title("Matplotlib demo") 
+# plt.xlabel("x axis caption") 
+# plt.ylabel("y axis caption") 
+df_hangqing.plot() 
+plt.show()
+
 
 
